@@ -1,15 +1,24 @@
-.left{
+div.left{
 	width: 50%;
 	background-color: #8D91C7;
 	float: left;
-	margin: 0px;
 	height: 600px;
-	padding: 0px;
+	
 }
 
-.right{
+div.right{
 	width: 50%;
 	background-color: #B0DAF1;
 	float:right;
 	height: 600px;
 }
+
+img{
+width: 300px;
+height: 300px;
+align-self: center;
+margin-left: 25%;
+margin-top: 25%;
+
+}
+
