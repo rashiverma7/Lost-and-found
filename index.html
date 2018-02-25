@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Lost and found</title>
@@ -7,22 +8,94 @@
 	</head>
 
 <body>
-	<div style="background-color: orchid; width: 100%; height: 80px; opacity: 0%">
-	<a href="#" >Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="about.html" >About</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="contact.html">Contact</a>
+	<div class="navbar">
+		<ul>
+				<li><a href="#" >Home</a></li>
+				<li><a href="about.html" >About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+	  </ul
 	</div>
-	
-	
-	
-	
-	
-	<div class="left"><img class="animated swing" src="sad.png" alt="sad"></div>
-   <div class="right">Right Div</div>
 
 
 
 
 
+	<div class="left"><img class="animated swing" src="sad.png" alt="sad"><br/><a href="login.html">
+	Have you lost any belonging?</a></div>
+
+	<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+			<script src="login.js"></script>
+      <button id = "sub" type="submit" onclick="login.js">Login</button>
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+  <div class="right"><img class="animated rubberBand" src="confused.jpg" alt="confused"</div>
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDYTgLC0KmWFQXdV9vQdqMqGbfXhs7gej4",
+	    authDomain: "lost-and-found-6a8e8.firebaseapp.com",
+	    databaseURL: "https://lost-and-found-6a8e8.firebaseio.com",
+	    projectId: "lost-and-found-6a8e8",
+	    storageBucket: "",
+	    messagingSenderId: "390705861927"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
+	<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script>
+
+
+
+
+
+</script>
+
+<script>
+$(function(){
+	$('a.lost').on('click',function(){
+		$('img').addClass('animated shake');
+	});
+});
+</script>
 </body>
 </html>
