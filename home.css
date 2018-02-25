@@ -46,9 +46,16 @@ h2{
 #post{
 color: white;
 border: 3px white solid;
-border-radius: 10%;
+border-radius: 20% 20% 20% 20%;
 padding: 5px;	
 margin-left: 250px;
+margin-top: 20px;
+text-decoration: none;
+}
+
+a#post:hover{
+background-color: black;
+color: blue;
 }
 
 
