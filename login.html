@@ -1,0 +1,209 @@
+<html>
+
+<div class="container">
+  <label for="uname"><b>Username</b></label>
+  <input type="text" placeholder="Enter Username" id="uname" required>
+
+  <label for="psw"><b>Password</b></label>
+  <input type="password" placeholder="Enter Password" id="psw" required>
+
+
+  <button id = "quickstart-sign-up" name="login" onclick='handleSignUp()'>Login</button>
+
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDYTgLC0KmWFQXdV9vQdqMqGbfXhs7gej4",
+    authDomain: "lost-and-found-6a8e8.firebaseapp.com",
+    databaseURL: "https://lost-and-found-6a8e8.firebaseio.com",
+    projectId: "lost-and-found-6a8e8",
+    storageBucket: "",
+    messagingSenderId: "390705861927"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript">
+
+
+
+
+
+    /**
+     * Handles the sign in button press.
+     */
+    function toggleSignIn() {
+      if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      } else {
+        var email = document.getElementById('uname').value;
+        var password = document.getElementById('psw').value;
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a password.');
+          return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email.val(), password.val())
+				.then(function(user){
+					console.log('Everything went fine');
+					console.log('User object: ' + user  );
+					window.open('lost.html');
+				}).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+
+          // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+      }
+
+    }
+    /**
+     * Handles the sign up button press.
+     */
+    function handleSignUp() {
+
+      var email_element = document.getElementById('uname');
+      if (email_element != null) {
+        var email = email_element.value;
+      }
+      else {
+        var email = "error@element.com";
+      }
+
+      var password_element = document.getElementById('psw');
+      if (password_element != null) {
+        var password = password_element.value;
+
+      }
+      else {
+        var password = "123456";
+      }
+      if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+      // Sign in with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+				console.log('Succesfully logged in!')
+
+        // [END_EXCLUDE]
+      });
+      window.open('lost.html');
+      // [END createwithemail]
+    }
+
+    function sendPasswordReset() {
+      var email = document.getElementById('email').value;
+      // [START sendpasswordemail]
+      firebase.auth().sendPasswordResetEmail(email).then(function() {
+        // Password Reset Email Sent!
+        // [START_EXCLUDE]
+        alert('Password Reset Email Sent!');
+        // [END_EXCLUDE]
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/invalid-email') {
+          alert(errorMessage);
+        } else if (errorCode == 'auth/user-not-found') {
+          alert(errorMessage);
+        }
+        console.log(error);
+				window.open('lost.html')
+        // [END_EXCLUDE]
+      });
+      // [END sendpasswordemail];
+    }
+    /**
+     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+     *    out, and that is where we update the UI.
+     */
+    function initApp() {
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          // [START_EXCLUDE]
+          document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+          document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          if (!emailVerified) {
+            document.getElementById('quickstart-verify-email').disabled = false;
+          }
+          // [END_EXCLUDE]
+        } else {
+          // User is signed out.
+          // [START_EXCLUDE]
+          //document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+          //document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+          //document.getElementById('quickstart-account-details').textContent = 'null';
+          // [END_EXCLUDE]
+        }
+        // [START_EXCLUDE silent]
+        //document.getElementById('quickstart-sign-in').disabled = false;
+        // [END_EXCLUDE]
+      });
+      // [END authstatelistener]
+      //document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+      document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
+      //document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
+      //document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+    }
+    window.onload = function() {
+      initApp();
+    };
+
+
+
+</script>
+
+</html>
