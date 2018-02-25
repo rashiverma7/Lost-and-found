@@ -49,6 +49,8 @@ border: 3px white solid;
 border-radius: 500px;
 padding: 10px;	
 margin-left: 250px;
+font-family: georgia;
+font-weight: bold;
 margin-top: 20px;
 text-decoration: none;
 }

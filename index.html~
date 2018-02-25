@@ -9,7 +9,7 @@
 
 <body>
 	<div class="navbar">
-		<ul>	
+		<ul>
 				<li><img class="logo" src="log.png" alt="logo" width="120px" height="120px"/></li>
 				<li><a href="#" >Home</a></li>
 				<li><a href="about.html" >About</a></li>
@@ -24,18 +24,18 @@
 	<div class="left"><h2>I HAVE</h2><p id="lost">LOST</p>
 	<p id="reach">Have you lost your beloved pet or a prized possession? You can reach out
 	to thousands of people who can help find what you are looking for.</p>
-	
-	<a id="post" href="post.html">POST NEW ITEM</a>
-	
+
+
+	<a id="post" href="login.html">POST NEW ITEM</a>
 	</div>
-	
+
 	<div class="right"><h2>I HAVE</h2><p id="lost">FOUND</p>
 	<p id="reach">Have you found something that belongs to someone else? You can extend a helping hand to thousands of
 	people and help them find what they are looking for.</p>
-	
+
 	</div>
-	
-	
+
+
 
 <!-- The Modal -->
 <div id="id01" class="modal">
@@ -67,7 +67,7 @@ class="close" title="Close Modal">&times;</span>
     </div>
   </form>
 </div>
- 
+
 
 	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 	<script>

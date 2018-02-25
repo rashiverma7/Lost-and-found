@@ -111,7 +111,7 @@
           alert(errorMessage);
         }
         console.log(error);
-				console.log('Successfully logged in!')
+				console.log('Succesfully logged in!')
 
         // [END_EXCLUDE]
       });
