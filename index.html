@@ -9,21 +9,33 @@
 
 <body>
 	<div class="navbar">
-		<ul>
+		<ul>	
+				<li><img class="logo" src="log.png" alt="logo" width="120px" height="120px"/></li>
 				<li><a href="#" >Home</a></li>
 				<li><a href="about.html" >About</a></li>
 				<li><a href="contact.html">Contact</a></li>
-	  </ul
+	  </ul>
 	</div>
 
 
 
 
 
-	<div class="left"><img class="animated swing" src="sad.png" alt="sad"><br/><a href="login.html">
-	Have you lost any belonging?</a></div>
-
-	<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+	<div class="left"><h2>I HAVE</h2><p id="lost">LOST</p>
+	<p id="reach">Have you lost your beloved pet or a prized possession? You can reach out
+	to thousands of people who can help find what you are looking for.</p>
+	
+	<a id="post" href="post.html">Post new item</a>
+	
+	</div>
+	
+	<div class="right"><h2>I HAVE</h2><p id="lost">FOUND</p>
+	<p id="reach">Have you found something that belongs to someone else? You can extend a helping hand to thousands of
+	people and help them find what they are looking for.</p>
+	
+	</div>
+	
+	
 
 <!-- The Modal -->
 <div id="id01" class="modal">
@@ -55,7 +67,7 @@ class="close" title="Close Modal">&times;</span>
     </div>
   </form>
 </div>
-  <div class="right"><img class="animated rubberBand" src="confused.jpg" alt="confused"</div>
+ 
 
 	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 	<script>

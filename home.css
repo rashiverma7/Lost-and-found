@@ -1,25 +1,68 @@
 div.left{
 	width: 50%;
-	background-color: #8D91C7;
+	background-image: url('homepage.jpg');
+	height: 500px;
 	float: left;
-	height: 800px;
+	background-size: cover;
 }
 
 
 
 div.right{
 	width: 50%;
-	background-color: #B0DAF1;
+	background-image: url('found.jpg');
 	float:right;
-	height: 800px;
+	height: 500px;
+	background-size: cover;
+	}
+
+h2{
+	font-family: seashore;
+	color: white;
+	text-align: center;
+	padding-top: 20px;
+	line-height: 10px;
 }
 
-img{
-width: 300px;
-height: 300px;
+#lost{
+	font-family: seashore;
+	color: white;
+	text-align: center;
+	margin-top: 2px;
+	font-size: 60px;
+	
+}
+
+#reach{
+	color: white;
+	font-size: 20px;
+	text-align: justify;
+	margin-left: 40px;
+	margin-right: 40px;
+	font-family: hello;
+	
+}
+
+#post{
+color: white;
+border: 3px white solid;
+border-radius: 10%;
+padding: 5px;	
+margin-left: 250px;
+}
+
+
+
+img .sad{
+width: 50%;
+height: 100px;
 align-self: center;
 margin-left: 25%;
 margin-top: 25%;
+}
+
+img .logo{
+padding: 10px;
 }
 
 
@@ -30,7 +73,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: black;
 }
 
 li {
@@ -47,7 +90,7 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: #111;
+    background-color: #004346;
 }
 
 /* The Modal (background) */
@@ -106,3 +149,20 @@ li a:hover {
     from {transform: scale(0)}
     to {transform: scale(1)}
 }
+
+
+@font-face{
+font-family: seashore;
+src: url(seashore.ttf);
+}
+
+@font-face{
+font-family: roboto;
+src: url(Roboto-Black.ttf);
+}
+
+@font-face{
+font-family: hello;
+src: url(hello.ttf);
+}
+
